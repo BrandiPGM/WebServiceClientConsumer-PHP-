@@ -12,29 +12,29 @@
             <ColumnDefinition Width="384*"/>
         </Grid.ColumnDefinitions>
         <Label x:Name="lblLocalite" Content="Localité :" HorizontalAlignment="Left" Margin="20,18,0,0" VerticalAlignment="Top" Height="26" Width="56"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="89,22,0,0" VerticalAlignment="Top" Width="169" Height="22" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="cboLocalite" HorizontalAlignment="Left" Margin="89,22,0,0" VerticalAlignment="Top" Width="169" Height="22" Grid.ColumnSpan="2" SelectedIndex="0"/>
         <Label x:Name="lblLocalite_Copy" Content="Prévision pour : " HorizontalAlignment="Left" Margin="114,22,0,0" VerticalAlignment="Top" Height="26" Width="111" Grid.Column="1"/>
         <Grid Background="#FFE5E5E5" Margin="50,53,519,291" Grid.ColumnSpan="2">
             <GroupBox x:Name="groupBox" Header="Ajouter" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <TextBox x:Name="tbxWeatherNE" HorizontalAlignment="Left" Height="67" Margin="10,37,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="81"/>
+            <TextBox x:Name="tbxMeteoJour0" HorizontalAlignment="Left" Height="67" Margin="10,37,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="81"/>
         </Grid>
         <Grid Background="#FFE5E5E5" Margin="230,298,142,42" Grid.Column="1">
             <GroupBox x:Name="groupBox1" Header="Ajouter" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <TextBox x:Name="tbxWeatherNE1" HorizontalAlignment="Left" Height="67" Margin="10,37,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="81"/>
+            <TextBox x:Name="tbxMeteoJour4" HorizontalAlignment="Left" Height="67" Margin="10,37,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="81"/>
         </Grid>
         <Grid Background="#FFE5E5E5" Margin="114,53,257,291" Grid.Column="1">
             <GroupBox x:Name="groupBox2" Header="Ajouter" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <TextBox x:Name="tbxWeatherNE2" HorizontalAlignment="Left" Height="67" Margin="10,37,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="81"/>
+            <TextBox x:Name="tbxMeteoJour1" HorizontalAlignment="Left" Height="67" Margin="10,37,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="81"/>
             <Grid Background="#FFE5E5E5" Margin="239,0,-234,4">
                 <GroupBox x:Name="groupBox3" Header="Ajouter" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <TextBox x:Name="tbxWeatherNE3" HorizontalAlignment="Left" Height="67" Margin="10,37,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="81"/>
+                <TextBox x:Name="tbxMeteoJour2" HorizontalAlignment="Left" Height="67" Margin="10,37,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="81"/>
                 <Grid Background="#FFE5E5E5" Margin="-389,248,389,-247">
                     <GroupBox x:Name="groupBox4" Header="Ajouter" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <TextBox x:Name="tbxWeatherNE4" HorizontalAlignment="Left" Height="67" Margin="10,37,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="81"/>
+                    <TextBox x:Name="tbxMeteoJour3" HorizontalAlignment="Left" Height="67" Margin="10,37,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="81"/>
                 </Grid>
             </Grid>
         </Grid>
-        <ComboBox x:Name="comboBox_Copy" HorizontalAlignment="Left" Margin="230,22,0,0" VerticalAlignment="Top" Width="169" Height="22" Grid.Column="1"/>
+        <ComboBox x:Name="cboPrevision" HorizontalAlignment="Left" Margin="230,22,0,0" VerticalAlignment="Top" Width="169" Height="22" Grid.Column="1" SelectedIndex="0"/>
         <Image x:Name="img_day_0" HorizontalAlignment="Left" Height="100" Margin="60,167,0,0" VerticalAlignment="Top" Width="100"/>
         <Image x:Name="img_day_1" HorizontalAlignment="Left" Height="100" Margin="242,419,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1"/>
         <Image x:Name="img_day_2" HorizontalAlignment="Left" Height="100" Margin="125,167,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1"/>
