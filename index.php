@@ -1,4 +1,10 @@
 <?php  
+if(isset($_GET['VilleAjout']))
+{ 
+    setcookie($_GET['VilleAjout'], $_GET['VilleAjout'], (time()+ 365*24*3600));
+    
+}
+
 
     if(isset($_GET['Ville'])&&isset($_GET['Nb_Jours']))
     {
@@ -14,7 +20,26 @@
         $Nb_Jours = 0;
         $Ville = "Choisissez une ville";
     }
+    //var_dump($_COOKIE);
 ?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Web service client consumer</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+  
+<body>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -25,17 +50,26 @@
 					</label>
                                     <select name="Ville" form="Localite">
                                         <option value="Neuchatel">Neuchâtel</option>
-                                        <option value="Travers">Travers</option>
-                                        <option value="Fleurier">Fleurier</option>
-                                        <option value="Noiraigue">Noiraigue</option>
+                                        <option value="la-Chaux-de-fonds">La Chaux-de-fonds</option>
+                                        <option value="Bern">Bern</option>
+                                        <option value="Lausanne">Lausanne</option>
+                                        <?php 
+                                        $Index = 0;
+                                        foreach ($_COOKIE as $City)
+                                        {
+                                            echo '<option value="'.$City.'">'.$City.'</option>';
+                                            
+                                        }
+                                            ?>
+                                        
                                     </select>
                                     
                                     <select name="Nb_Jours" form="Localite">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
+                                        <option value="1">Aujourd'hui</option>
+                                        <option value="2">1 jour de plus</option>
+                                        <option value="3">2 jours de plus</option>
+                                        <option value="4">3 jours de plus</option>
+                                        <option value="5">4 jours de plus</option>
                                     </select>
                                     
                                 </div>
@@ -52,25 +86,9 @@
 	</div>
 </div>
 <style>
-hr {
-    height: 30px;
-    border-style: solid;
-    border-color: black;
-    border-width: 1px 0 0 0;
-    border-radius: 20px;
-}
-hr:before { /* Not really supposed to work, but does */
-    display: block;
-    content: "";
-    height: 30px;
-    margin-top: -31px;
-    border-style: solid;
-    border-color: black;
-    border-width: 0 0 1px 0;
-    border-radius: 20px;
-}
+
 </style>
-<h1><?php if(isset($_GET['Ville'])){ echo 'Prévision Météo pour'.$Ville;}else {echo $Ville;}?></h1>
+<h1><?php if(isset($_GET['Ville'])){ echo 'Prévision Météo pour '.$Ville;}else {echo $Ville;}?></h1>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -148,13 +166,37 @@ hr:before { /* Not really supposed to work, but does */
                                             echo '<td>Temp. max : '.$data['fcst_day_3']['tmax'].'°</td>';
                                             echo '<td>Temp. max : '.$data['fcst_day_4']['tmax'].'°</td></tr></tbody>';
                                         break;
-                                    default : echo 'Aucun jours choisi';
+                                    default : echo 'Choisissez le nombre de jour à afficher.';
                                         break;
                                 }
-                            
                             ?>
 				
 			</table>
 		</div>
 	</div>
 </div>
+<div class="col-md-12">
+
+  <hr size=10 align="center" width="100%">
+
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<form role="form" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="GET" id="Ajout_Localite" >
+				<div class="form-group">
+					 
+					<label for="exampleInputEmail1">
+						Ville à ajouter
+					</label>
+                                    <input type="text" name="VilleAjout" class="form-control" id="Ajout_Localite" />
+				</div>
+				<button type="submit" class="btn btn-default">
+					Ajouter
+				</button>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>
