@@ -2,7 +2,7 @@
 if(isset($_GET['VilleAjout']))
 { 
     setcookie($_GET['VilleAjout'], $_GET['VilleAjout'], (time()+ 365*24*3600));
-    
+    header("Refresh:0");
 }
 
 
