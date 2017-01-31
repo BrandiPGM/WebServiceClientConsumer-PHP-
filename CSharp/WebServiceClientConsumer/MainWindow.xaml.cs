@@ -26,11 +26,13 @@ namespace WebServiceClientConsumer
         {
             InitializeComponent();
 
+            List<string> ListeVilles = LireFichierVilles();
+
             //Ajout des Villes dans la lsite déroulante
-            cboLocalite.Items.Add("Neuchatel");
-            cboLocalite.Items.Add("La-chaux-de-fonds");
-            cboLocalite.Items.Add("Bern");
-            cboLocalite.Items.Add("Lausanne");
+            foreach(string s in ListeVilles)
+            {
+                cboLocalite.Items.Add(s);
+            }
 
             //Ajout du nombres de jour dans la liste déroulante
             cboPrevision.Items.Add(1);
@@ -217,6 +219,21 @@ namespace WebServiceClientConsumer
             img_day_4.Source = new BitmapImage();
         }
 
+        private void btnValider_Click(object sender, RoutedEventArgs e)
+        {
+            List<string> L = LireFichierVilles();
 
+            L.Add(tbxAjouterVille.Text);
+
+            string[] s = L.ToArray();
+            System.IO.File.WriteAllLines("Villes.txt", s);
+        }
+
+        private List<string> LireFichierVilles()
+        {
+            string[] s = System.IO.File.ReadAllLines("Villes.txt");
+            List<string> L = s.ToList<string>();
+            return L;
+        }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WebServiceClientConsumer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600.979" Width="758.334">
+        Title="MainWindow" Height="600.979" Width="758">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="133*"/>
@@ -44,9 +44,9 @@
         <Image x:Name="img_day_1" HorizontalAlignment="Left" Height="61" Margin="74,167,0,0" VerticalAlignment="Top" Width="69" Grid.Column="1"/>
         <Image x:Name="img_day_2" HorizontalAlignment="Left" Height="61" Margin="283,176,0,0" VerticalAlignment="Top" Width="69" Grid.Column="1"/>
         <Image x:Name="img_day_3" HorizontalAlignment="Left" Height="61" Margin="60,419,0,0" VerticalAlignment="Top" Width="69"/>
-        <Button x:Name="button" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="324,419,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.533,2.773"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Column="1" Margin="324,382,0,0"/>
-        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="324,356,0,0"/>
+        <Button x:Name="btnValider" Content="Valider" Grid.Column="1" HorizontalAlignment="Left" Margin="283,436,0,0" VerticalAlignment="Top" Width="83" RenderTransformOrigin="0.533,2.773" Height="24" Click="btnValider_Click"/>
+        <TextBox x:Name="tbxAjouterVille" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Margin="279,396,0,0"/>
+        <Label x:Name="lblAjouterVille" Content="Ajouter une ville" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="283,365,0,0"/>
 
     </Grid>
 </Window>
