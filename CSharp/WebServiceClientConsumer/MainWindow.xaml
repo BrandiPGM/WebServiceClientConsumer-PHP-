@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WebServiceClientConsumer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600.979" Width="758">
+        Title="Web service client consumer" Height="600.979" Width="758">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="133*"/>
@@ -19,7 +19,7 @@
                 <RowDefinition Height="43*"/>
                 <RowDefinition Height="184*"/>
             </Grid.RowDefinitions>
-            <GroupBox x:Name="groupBox" Header="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-7,0,0"/>
+            <GroupBox x:Name="groupBox" Header="" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <TextBox x:Name="tbxMeteoJour0" HorizontalAlignment="Left" Height="66" Margin="10,37,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="132" Grid.RowSpan="2"/>
         </Grid>
         <Grid Background="#FFE5E5E5" Margin="59,297,313,41" Grid.Column="1">
@@ -29,10 +29,10 @@
         <Grid Background="#FFE5E5E5" Margin="58,53,313,291" Grid.Column="1">
             <GroupBox x:Name="groupBox1" Header="Ajouter" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <TextBox x:Name="tbxMeteoJour1" HorizontalAlignment="Left" Height="66" Margin="10,37,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="132"/>
-            <Grid Background="#FFE5E5E5" Margin="206,0,-201,4">
+            <Grid Background="#FFE5E5E5" Margin="206,0,-201,0">
                 <GroupBox x:Name="groupBox2" Header="Ajouter" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <TextBox x:Name="tbxMeteoJour2" HorizontalAlignment="Left" Height="66" Margin="10,37,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="132"/>
-                <Grid Background="#FFE5E5E5" Margin="-410,239,410,-252">
+                <Grid Background="#FFE5E5E5" Margin="-408,244,408,-250">
                     <GroupBox x:Name="groupBox3" Header="Ajouter" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     <TextBox x:Name="tbxMeteoJour3" HorizontalAlignment="Left" Height="66" Margin="10,37,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="132"/>
                 </Grid>
