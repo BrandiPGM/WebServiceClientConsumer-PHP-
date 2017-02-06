@@ -4,8 +4,22 @@
 // Dans le cas ou elle existe, on l'ajoute dans un cookie.
 if(isset($_GET['VilleAjout']))
 { 
-    setcookie($_GET['VilleAjout'], $_GET['VilleAjout'], (time()+ 365*24*3600));
-    header("Refresh:0"); //important afin de bien mettre a jour le cookie. Sans ça, le cookie n'est pas visible.
+$Doublon = true;
+	foreach ($_COOKIE as $City)
+    {
+        if($City == $_GET['VilleAjout'])
+		{
+			$Doublon = false;
+		}			
+    }
+	
+	if($Doublon)
+	{
+		setcookie($_GET['VilleAjout'], $_GET['VilleAjout'], (time()+ 365*24*3600));
+		header("Refresh:0"); //important afin de bien mettre a jour le cookie. Sans ça, le cookie n'est pas visible sans rafraichir la page.
+	}
+
+    
 }
     if(isset($_GET['Ville'])&&isset($_GET['Nb_Jours']))
     {

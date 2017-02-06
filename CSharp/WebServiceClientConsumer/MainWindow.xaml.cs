@@ -68,7 +68,7 @@ namespace WebServiceClientConsumer
                 //La boucle for permet de savoir combien de jours on affiche.
                 for(int i = 0; i <= nbJours; i++)
                 {
-                    //Le switch affiche en fonction de i le nombre de jours. Ecriture des prévision dans les textboxs
+                    //Le switch affiche en fonction de i le nombre de jours. Ecriture des prévision dans les textboxs et affichage des images.
                     switch (i)
                     {
                         case 0: //Le 0 est là car lorsque l'ont lance l'application il se peut que le programme vienne ici. Dans ce cas, comme nous n'avons pas défini de jour, il pourrait générer une erreur sans celà.
