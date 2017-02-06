@@ -15,6 +15,14 @@ using System.Windows.Shapes;
 using HttpUtils;
 using Newtonsoft.Json;
 
+
+/// <summary>
+/// Auteur : Brandon Mérillat
+/// Classe : 3INFC
+/// Enseignant : P.Sachetti
+/// Date : 06/02/17
+/// </summary>
+
 namespace WebServiceClientConsumer
 {
     /// <summary>
@@ -37,7 +45,7 @@ namespace WebServiceClientConsumer
 
         }
         /// <summary>
-        /// 
+        /// Permet de faire la connexion au site "www.prevision-meteo.ch" pour récupérer les informations météorologique.
         /// </summary>
         /// <param name="Ville"></param>
         private void RecupererMeteo(string Ville)
@@ -46,6 +54,7 @@ namespace WebServiceClientConsumer
 
             try
             {
+                //Connexion au site.
                 string endPoint = @"http://www.prevision-meteo.ch/services/json/" + Ville;
                 var client = new RestClient(endPoint);
                 var json = client.MakeRequest();
@@ -54,14 +63,15 @@ namespace WebServiceClientConsumer
                 //Converti dans le type requis
                 MeteoReponse = (Meteo)objResponse;
 
-                //Ecriture des prévision dans les textboxs
                 int nbJours = Convert.ToInt16(cboPrevision.SelectedValue);
-                EffacerTout();
+                EffacerTout(); 
+                //La boucle for permet de savoir combien de jours on affiche.
                 for(int i = 0; i <= nbJours; i++)
                 {
-                    switch(i)
+                    //Le switch affiche en fonction de i le nombre de jours. Ecriture des prévision dans les textboxs
+                    switch (i)
                     {
-                        case 0:
+                        case 0: //Le 0 est là car lorsque l'ont lance l'application il se peut que le programme vienne ici. Dans ce cas, comme nous n'avons pas défini de jour, il pourrait générer une erreur sans celà.
                             break;
                         case 1:
                                 tbxMeteoJour0.Text = AfficherPrevision_Jour_0(MeteoReponse);
@@ -93,7 +103,7 @@ namespace WebServiceClientConsumer
             }
         }
         /// <summary>
-        /// 
+        /// On entre dans cette méthode au moment où on change la localité.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -108,11 +118,22 @@ namespace WebServiceClientConsumer
             { }
             
         }
+
+        /// <summary>
+        /// On entre dans cette méthode au moment où on change le nombre de jours.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cboPrevision_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            string Localite = Convert.ToString(cboLocalite.SelectedValue);
+            string Localite = Convert.ToString(cboLocalite.SelectedValue); //Le ".SelectedValue" doit être converti en string pour être utilisé.
             RecupererMeteo(Localite);
         }
+        /// <summary>
+        /// Permet d'afficher l'image de la météo pour le jour courant.
+        /// </summary>
+        /// <param name="fullFilePath"></param>
+        /// <returns></returns>
         private BitmapImage AfficherIcone(string fullFilePath)
         {
             Image image = new Image();
@@ -210,7 +231,7 @@ namespace WebServiceClientConsumer
         /// Efface toutes les text box afin de ne plus avoir les textes afficher lorseque
         /// l'ont passe d'un plus grands nombres de jours a un plus petit nombres
         /// Exemple : de 5 jours à 3
-        /// Permet également de retirer l'affichage des images
+        /// Permet également de retirer les images qui serait déjà présente.
         /// </summary>
         private void EffacerTout()
         {
@@ -227,13 +248,19 @@ namespace WebServiceClientConsumer
             img_day_4.Source = new BitmapImage();
         }
 
+        /// <summary>
+        /// C'est ici que l'ont récupère la valeur de la villes que l'ont souhaite ajouter.
+        /// On est ensuite renvoyer dans la méthode "LireFichierVille"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnValider_Click(object sender, RoutedEventArgs e)
         {
-            List<string> L = LireFichierVilles();
+            List<string> ListeDeVilles = LireFichierVilles();
 
-            L.Add(tbxAjouterVille.Text);
+            ListeDeVilles.Add(tbxAjouterVille.Text);
 
-            string[] s = L.ToArray();
+            string[] s = ListeDeVilles.ToArray();
             System.IO.File.WriteAllLines("Villes.txt", s);
             tbxAjouterVille.Text = "";
             AfficherVillesListe();
@@ -242,13 +269,23 @@ namespace WebServiceClientConsumer
 
         }
 
+        /// <summary>
+        /// Lit dans le fichier "Villes.txt" les villes qui sont par défaut et celles ajoutées.
+        /// Elle renvoie une liste de villes.
+        /// </summary>
+        /// <returns></returns>
         private List<string> LireFichierVilles()
         {
             string[] s = System.IO.File.ReadAllLines("Villes.txt");
-            List<string> L = s.ToList<string>();
-            return L;
+            List<string> ListeVille = s.ToList<string>();
+            return ListeVille;
         }
 
+        /// <summary>
+        /// Affiche les villes présente dans le fichier.
+        /// Il retire toutes les villes déjà présente dans la liste déroulante.
+        /// Puis, réajoute les villes ainsi que la nouvelle présente dans le fichier .txt
+        /// </summary>
         private void AfficherVillesListe()
         {
             List<string> ListeVilles = LireFichierVilles();

@@ -1,13 +1,15 @@
 <?php  
+//Si une ville se trouve dans cette variable, celà signifie que l'ont souhaite ajouté une ville
+// et la conserver. C'est donc ici, que l'ont test si la variable existe.
+// Dans le cas ou elle existe, on l'ajoute dans un cookie.
 if(isset($_GET['VilleAjout']))
 { 
     setcookie($_GET['VilleAjout'], $_GET['VilleAjout'], (time()+ 365*24*3600));
-    header("Refresh:0");
+    header("Refresh:0"); //important afin de bien mettre a jour le cookie. Sans ça, le cookie n'est pas visible.
 }
-
-
     if(isset($_GET['Ville'])&&isset($_GET['Nb_Jours']))
     {
+		//Connnexion au site.
         $Nb_Jours = $_GET['Nb_Jours'];
         $Ville = $_GET['Ville'];
         require_once 'class/ApiSimpleGetRestClient.php';
@@ -20,7 +22,6 @@ if(isset($_GET['VilleAjout']))
         $Nb_Jours = 0;
         $Ville = "Choisissez une ville";
     }
-    //var_dump($_COOKIE);
 ?>
 <!DOCTYPE html>
 <html lang="en">
