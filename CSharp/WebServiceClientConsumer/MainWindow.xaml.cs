@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 using HttpUtils;
 using Newtonsoft.Json;
 
-
 /// <summary>
 /// Auteur : Brandon Mérillat
 /// Classe : 3INFC
@@ -38,12 +37,12 @@ namespace WebServiceClientConsumer
             AfficherVillesListe();
 
             //Ajout du nombres de jour dans la liste déroulante
-            cboPrevision.Items.Add(1);
-            cboPrevision.Items.Add(2);
-            cboPrevision.Items.Add(3);
-            cboPrevision.Items.Add(4);
-            cboPrevision.Items.Add(5);
-            cboPrevision.SelectedIndex = 4;
+            cbxPrevision.Items.Add(1);
+            cbxPrevision.Items.Add(2);
+            cbxPrevision.Items.Add(3);
+            cbxPrevision.Items.Add(4);
+            cbxPrevision.Items.Add(5);
+
 
         }
         /// <summary>
@@ -65,7 +64,7 @@ namespace WebServiceClientConsumer
                 //Converti dans le type requis
                 MeteoReponse = (Meteo)objResponse;
 
-                int iJours = Convert.ToInt16(cboPrevision.SelectedValue);
+                int iJours = Convert.ToInt16(cbxPrevision.SelectedValue);
                 EffacerTout(); 
                 //La boucle for permet de savoir combien de jours on affiche.
                 for(int i = 0; i <= iJours; i++)
@@ -109,11 +108,11 @@ namespace WebServiceClientConsumer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cboLocalite_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void cbxLocalite_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(Convert.ToString(cboLocalite.SelectedValue) != "")
+            if(Convert.ToString(cbxLocalite.SelectedValue) != "")
             {
-                string Localite = Convert.ToString(cboLocalite.SelectedValue);
+                string Localite = Convert.ToString(cbxLocalite.SelectedValue);
                 RecupererMeteo(Localite);
             }
             else
@@ -126,9 +125,9 @@ namespace WebServiceClientConsumer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cboPrevision_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        private void cbxPrevision_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            string Localite = Convert.ToString(cboLocalite.SelectedValue); //Le ".SelectedValue" doit être converti en string pour être utilisé.
+            string Localite = Convert.ToString(cbxLocalite.SelectedValue); //Le ".SelectedValue" doit être converti en string pour être utilisé.
             RecupererMeteo(Localite);
         }
         /// <summary>
@@ -266,8 +265,8 @@ namespace WebServiceClientConsumer
             System.IO.File.WriteAllLines("Villes.txt", s);
             tbxAjouterVille.Text = "";
             AfficherVillesListe();
-            cboLocalite.SelectedIndex = 0;
-            MessageBox.Show("La valeur a correctement été ajoutée", "Valeur ajoutée");
+            cbxLocalite.SelectedIndex = 0;
+            MessageBox.Show("La ville a correctement été ajoutée", "Valeur ajoutée");
 
         }
 
@@ -292,12 +291,12 @@ namespace WebServiceClientConsumer
         {
             List<string> lstVilles = LireFichierVilles();
             
-            cboLocalite.Items.Clear();
+            cbxLocalite.Items.Clear();
 
             //Ajout des Villes dans la lsite déroulante
             foreach (string s in lstVilles)
             {
-                cboLocalite.Items.Add(s);
+                cbxLocalite.Items.Add(s);
             }
         }
     }

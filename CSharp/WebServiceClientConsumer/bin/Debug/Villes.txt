@@ -4,3 +4,4 @@ Lausanne
 la-Chaux-de-fonds
 Geneve
 Basel
+Genève
