@@ -34,6 +34,7 @@ namespace WebServiceClientConsumer
         {
             InitializeComponent();
 
+            //Ajout des villes par défaut et/ou celles précédemment ajoutées.
             AfficherVillesListe();
 
             //Ajout du nombres de jour dans la liste déroulante
@@ -42,20 +43,21 @@ namespace WebServiceClientConsumer
             cboPrevision.Items.Add(3);
             cboPrevision.Items.Add(4);
             cboPrevision.Items.Add(5);
+            cboPrevision.SelectedIndex = 4;
 
         }
         /// <summary>
         /// Permet de faire la connexion au site "www.prevision-meteo.ch" pour récupérer les informations météorologique.
         /// </summary>
-        /// <param name="Ville"></param>
-        private void RecupererMeteo(string Ville)
+        /// <param name="strVille"></param>
+        private void RecupererMeteo(string strVille)
         {
             Meteo MeteoReponse = new Meteo();
 
             try
             {
                 //Connexion au site.
-                string endPoint = @"http://www.prevision-meteo.ch/services/json/" + Ville;
+                string endPoint = @"http://www.prevision-meteo.ch/services/json/" + strVille;
                 var client = new RestClient(endPoint);
                 var json = client.MakeRequest();
                 object objResponse = JsonConvert.DeserializeObject(json, typeof(Meteo));
@@ -63,10 +65,10 @@ namespace WebServiceClientConsumer
                 //Converti dans le type requis
                 MeteoReponse = (Meteo)objResponse;
 
-                int nbJours = Convert.ToInt16(cboPrevision.SelectedValue);
+                int iJours = Convert.ToInt16(cboPrevision.SelectedValue);
                 EffacerTout(); 
                 //La boucle for permet de savoir combien de jours on affiche.
-                for(int i = 0; i <= nbJours; i++)
+                for(int i = 0; i <= iJours; i++)
                 {
                     //Le switch affiche en fonction de i le nombre de jours. Ecriture des prévision dans les textboxs et affichage des images.
                     switch (i)
@@ -153,13 +155,13 @@ namespace WebServiceClientConsumer
         /// <returns></returns>
         private string AfficherPrevision_Jour_0(Meteo Meteo_Prevision_0)
         {
-            string prevision = "";
+            string strPrevision = "";
             groupBox.Header = Meteo_Prevision_0.fcst_day_0.day_long;
-            prevision += Meteo_Prevision_0.fcst_day_0.condition + Environment.NewLine;
-            prevision += "Temp. minimal " + Meteo_Prevision_0.fcst_day_0.tmin + '°' + Environment.NewLine;
-            prevision += "Temp. maximal " + Meteo_Prevision_0.fcst_day_0.tmax + '°';
+            strPrevision += Meteo_Prevision_0.fcst_day_0.condition + Environment.NewLine;
+            strPrevision += "Temp. minimal " + Meteo_Prevision_0.fcst_day_0.tmin + '°' + Environment.NewLine;
+            strPrevision += "Temp. maximal " + Meteo_Prevision_0.fcst_day_0.tmax + '°';
 
-            return prevision;
+            return strPrevision;
         }
 
         /// <summary>
@@ -170,13 +172,13 @@ namespace WebServiceClientConsumer
         /// <returns></returns>
         private string AfficherPrevision_Jour_1(Meteo Meteo_Prevision_1)
         {
-            string prevision = "";
+            string strPrevision = "";
             groupBox1.Header = Meteo_Prevision_1.fcst_day_1.day_long;
-            prevision += Meteo_Prevision_1.fcst_day_1.condition + Environment.NewLine;
-            prevision += "Temp. minimal " + Meteo_Prevision_1.fcst_day_1.tmin + '°' + Environment.NewLine;
-            prevision += "Temp. maximal " + Meteo_Prevision_1.fcst_day_1.tmax + '°';
+            strPrevision += Meteo_Prevision_1.fcst_day_1.condition + Environment.NewLine;
+            strPrevision += "Temp. minimal " + Meteo_Prevision_1.fcst_day_1.tmin + '°' + Environment.NewLine;
+            strPrevision += "Temp. maximal " + Meteo_Prevision_1.fcst_day_1.tmax + '°';
 
-            return prevision;
+            return strPrevision;
         }
 
         /// <summary>
@@ -186,13 +188,13 @@ namespace WebServiceClientConsumer
         /// <returns></returns>
         private string AfficherPrevision_Jour_2(Meteo Meteo_Prevision_2)
         {
-            string prevision = "";
+            string strPrevision = "";
             groupBox2.Header = Meteo_Prevision_2.fcst_day_2.day_long;
-            prevision += Meteo_Prevision_2.fcst_day_2.condition + Environment.NewLine;
-            prevision += "Temp. minimal " + Meteo_Prevision_2.fcst_day_2.tmin + '°' + Environment.NewLine;
-            prevision += "Temp. maximal " + Meteo_Prevision_2.fcst_day_2.tmax + '°';
+            strPrevision += Meteo_Prevision_2.fcst_day_2.condition + Environment.NewLine;
+            strPrevision += "Temp. minimal " + Meteo_Prevision_2.fcst_day_2.tmin + '°' + Environment.NewLine;
+            strPrevision += "Temp. maximal " + Meteo_Prevision_2.fcst_day_2.tmax + '°';
 
-            return prevision;
+            return strPrevision;
         }
 
         /// <summary>
@@ -202,13 +204,13 @@ namespace WebServiceClientConsumer
         /// <returns></returns>
         private string AfficherPrevision_Jour_3(Meteo Meteo_Prevision_3)
         {
-            string prevision = "";
+            string strPrevision = "";
             groupBox3.Header = Meteo_Prevision_3.fcst_day_3.day_long;
-            prevision += Meteo_Prevision_3.fcst_day_3.condition + Environment.NewLine;
-            prevision += "Temp. minimal " + Meteo_Prevision_3.fcst_day_3.tmin + '°' + Environment.NewLine;
-            prevision += "Temp. maximal " + Meteo_Prevision_3.fcst_day_3.tmax + '°';
+            strPrevision += Meteo_Prevision_3.fcst_day_3.condition + Environment.NewLine;
+            strPrevision += "Temp. minimal " + Meteo_Prevision_3.fcst_day_3.tmin + '°' + Environment.NewLine;
+            strPrevision += "Temp. maximal " + Meteo_Prevision_3.fcst_day_3.tmax + '°';
 
-            return prevision;
+            return strPrevision;
         }
 
         /// <summary>
@@ -218,13 +220,13 @@ namespace WebServiceClientConsumer
         /// <returns></returns>
         private string AfficherPrevision_Jour_4(Meteo Meteo_Prevision_4)
         {
-            string prevision = "";
+            string strPrevision = "";
             groupBox4.Header = Meteo_Prevision_4.fcst_day_4.day_long;
-            prevision += Meteo_Prevision_4.fcst_day_4.condition + Environment.NewLine;
-            prevision += "Temp. minimal " + Meteo_Prevision_4.fcst_day_4.tmin + '°' + Environment.NewLine;
-            prevision += "Temp. maximal " + Meteo_Prevision_4.fcst_day_4.tmax + '°';
+            strPrevision += Meteo_Prevision_4.fcst_day_4.condition + Environment.NewLine;
+            strPrevision += "Temp. minimal " + Meteo_Prevision_4.fcst_day_4.tmin + '°' + Environment.NewLine;
+            strPrevision += "Temp. maximal " + Meteo_Prevision_4.fcst_day_4.tmax + '°';
 
-            return prevision;
+            return strPrevision;
         }
 
         /// <summary>
@@ -256,11 +258,11 @@ namespace WebServiceClientConsumer
         /// <param name="e"></param>
         private void btnValider_Click(object sender, RoutedEventArgs e)
         {
-            List<string> ListeDeVilles = LireFichierVilles();
+            List<string> lstDeVilles = LireFichierVilles();
 
-            ListeDeVilles.Add(tbxAjouterVille.Text);
+            lstDeVilles.Add(tbxAjouterVille.Text);
 
-            string[] s = ListeDeVilles.ToArray();
+            string[] s = lstDeVilles.ToArray();
             System.IO.File.WriteAllLines("Villes.txt", s);
             tbxAjouterVille.Text = "";
             AfficherVillesListe();
@@ -276,8 +278,8 @@ namespace WebServiceClientConsumer
         /// <returns></returns>
         private List<string> LireFichierVilles()
         {
-            string[] s = System.IO.File.ReadAllLines("Villes.txt");
-            List<string> ListeVille = s.ToList<string>();
+            string[] tblVilles = System.IO.File.ReadAllLines("Villes.txt");
+            List<string> ListeVille = tblVilles.ToList<string>();
             return ListeVille;
         }
 
@@ -288,12 +290,12 @@ namespace WebServiceClientConsumer
         /// </summary>
         private void AfficherVillesListe()
         {
-            List<string> ListeVilles = LireFichierVilles();
+            List<string> lstVilles = LireFichierVilles();
             
             cboLocalite.Items.Clear();
 
             //Ajout des Villes dans la lsite déroulante
-            foreach (string s in ListeVilles)
+            foreach (string s in lstVilles)
             {
                 cboLocalite.Items.Add(s);
             }

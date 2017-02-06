@@ -38,7 +38,7 @@
                 </Grid>
             </Grid>
         </Grid>
-        <ComboBox x:Name="cboPrevision" HorizontalAlignment="Left" Margin="230,22,0,0" VerticalAlignment="Top" Width="169" Height="22" Grid.Column="1" SelectedIndex="0" SelectionChanged="cboPrevision_SelectionChanged_1"/>
+        <ComboBox x:Name="cboPrevision" HorizontalAlignment="Left" Margin="230,22,0,0" VerticalAlignment="Top" Width="169" Height="22" Grid.Column="1" SelectedIndex="4" SelectionChanged="cboPrevision_SelectionChanged_1" IsReadOnly="True"/>
         <Image x:Name="img_day_0" HorizontalAlignment="Left" Height="61" Margin="60,167,0,0" VerticalAlignment="Top" Width="69"/>
         <Image x:Name="img_day_4" HorizontalAlignment="Left" Height="61" Margin="74,419,0,0" VerticalAlignment="Top" Width="69" Grid.Column="1"/>
         <Image x:Name="img_day_1" HorizontalAlignment="Left" Height="61" Margin="74,167,0,0" VerticalAlignment="Top" Width="69" Grid.Column="1"/>
